@@ -1,5 +1,6 @@
 "use client";
 
+import { Suspense } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -31,6 +32,7 @@ export const ErweiterteVorsorge = () => {
     router.push(`?${params.toString()}`, { scroll: false });
   };
   return (
+    <Suspense fallback={<div className="min-h-screen bg-[#FCFBFA] flex items-center justify-center">Laden...</div>}>
     <div className="space-y-10">
       {/* --- SUB-NAVIGATION --- */}
       <motion.div
@@ -78,5 +80,6 @@ export const ErweiterteVorsorge = () => {
         </AnimatePresence>
       </div>
     </div>
+    </Suspense>
   );
 };

@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Heart, Sun, Zap, ShieldCheck, Activity, Sparkles, Thermometer, Brain, Leaf } from "lucide-react";
+import { Heart, ShieldCheck, Activity, Sparkles, Thermometer, Brain, Leaf } from "lucide-react";
 
 export const WechseljahreSection = () => {
   return (
