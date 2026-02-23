@@ -60,8 +60,6 @@ export const EmpfaengnisSection = () => {
             </p>
           </motion.div>
         </div>
-
-        <div className="lg:col-span-5">
           <div className="lg:col-span-5">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -86,7 +84,6 @@ export const EmpfaengnisSection = () => {
               <div className="absolute inset-0 bg-gradient-to-br from-[#e62e7a]/5 to-transparent pointer-events-none" />
             </motion.div>
           </div>
-        </div>
       </div>
     </div>
   );

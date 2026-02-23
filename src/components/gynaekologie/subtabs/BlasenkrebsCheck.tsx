@@ -32,7 +32,8 @@ export const BlasenkrebsCheck = () => {
           className="p-10 md:p-12 rounded-[45px] bg-white border border-rose-100 shadow-[0_20px_50px_-15px_rgba(230,46,122,0.06)] flex flex-col justify-center space-y-6"
         >
           <p className="text-slate-600 font-serif italic text-lg md:text-xl leading-relaxed">
-            Jährlich erkranken in Deutschland mehr als 28 000 Menschen an Harnblasenkrebs (Tendenz steigend).
+            Jährlich erkranken in Deutschland mehr als 28 000 Menschen an Harnblasenkrebs
+            (Tendenz steigend).
           </p>
           <div className="h-[1px] w-12 bg-rose-100" />
           <p className="text-slate-500 font-serif italic text-base md:text-lg leading-relaxed">

@@ -33,7 +33,6 @@ export const MainVorsorge = () => {
       </motion.div>
 
       <div className="grid lg:grid-cols-12 gap-10 md:gap-16 lg:gap-24 items-start">
-        {/* ЛЕВАЯ КОЛОНКА */}
         <div className="lg:col-span-7 space-y-10 md:space-y-12">
           <motion.div
             initial={{ opacity: 0, x: -20 }}
@@ -42,7 +41,7 @@ export const MainVorsorge = () => {
             className="space-y-4 md:space-y-6"
           >
             <h3 className="text-3xl sm:text-4xl md:text-5xl font-serif text-slate-900 leading-[1.1] tracking-tighter italic">
-              Krebs<span className="text-[#e62e7a]">vorsorge</span>
+              Krebsvorsorge
             </h3>
             <p className="text-slate-600 leading-relaxed text-base md:text-lg font-serif italic max-w-2xl">
               Die empfohlene jährliche Krebsvorsorge, die Bestandteil der Kassenleistungen ist, umfasst folgende Leistungen:

@@ -97,7 +97,8 @@ export const Header = ({ forceScrolled = false }: HeaderProps) => {
               <Link
                 key={item.name}
                 href={item.href}
-                className={`text-sm uppercase tracking-[0.3em] font-bold transition-all duration-300 relative group ${isActive
+                className={`text-sm uppercase tracking-[0.3em] font-bold transition-all duration-300 relative group
+                  ${isActive && !isScrolled ? "w-full text-white" : isActive && isScrolled
                     ? "text-[#e62e7a]"
                     : isScrolled
                       ? "text-slate-800"
@@ -106,7 +107,8 @@ export const Header = ({ forceScrolled = false }: HeaderProps) => {
               >
                 {item.name}
                 <span
-                  className={`absolute -bottom-2 left-0 h-[1.5px] transition-all duration-300 ${isActive
+                  className={`absolute -bottom-2 left-0 h-[1.5px] transition-all duration-300
+                    ${isActive && !isScrolled ? "w-full bg-white" : isActive && isScrolled
                       ? "w-full bg-[#e62e7a]"
                       : `w-0 group-hover:w-full ${isScrolled ? "bg-[#e62e7a]/90" : "bg-white/90"}`
                     }`}

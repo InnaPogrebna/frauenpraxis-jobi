@@ -35,7 +35,7 @@ export const ThinPrepTest = () => {
 
           <div className="space-y-6 text-slate-500 italic leading-relaxed text-base md:text-lg">
             <p>
-              Die Krebsfrüherkennung (Pap-Test) hat zum Ziel, Zellveränderung möglichst früh zu erkennen, und wenn nötig, entsprechende Kontroll- und Therapiemaßnahmen einzuleiten.
+              Die Krebsfrüherkennung (Pap-Test) hat zum Ziel, Zellveränderungen möglichst früh zu erkennen, und wenn nötig, entsprechende Kontroll- und Therapiemaßnahmen einzuleiten.
             </p>
             <p>
               Einmal pro Jahr kann jede Frau eine Vorsorgeuntersuchung in Anspruch nehmen. Hierbei werden vom Gebärmutterhals Zellen entnommen und im Labor nach Anfärbung mikroskopisch untersucht.

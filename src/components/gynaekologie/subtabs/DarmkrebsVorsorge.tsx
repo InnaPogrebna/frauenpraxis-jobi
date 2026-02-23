@@ -62,7 +62,7 @@ export const DarmkrebsVorsorge = () => {
                 </div>
                 <div className="h-[1px] w-12 bg-[#e62e7a]/30 group-hover:w-20 transition-all duration-500" />
                 <p className="text-slate-600 font-serif italic text-base md:text-lg leading-relaxed">
-                  Rauchen, übermäßiger Alkoholgenuss, falsche Ernährung (fettreich, ballaststoffarm=Fastfood) und zu wenig körperliche Bewegung.
+                  Rauchen, übermäßiger Alkoholgenuss, falsche Ernährung (fettreich, ballaststoffarm&nbsp;=&nbsp;Fastfood) und zu wenig körperliche Bewegung.
                 </p>
                 <p className="text-slate-400 text-sm italic pt-4 border-t border-rose-50">
                   Manche Menschen sind jedoch auch ohne diese Risikofaktoren gefährdet, wenn in ihrer Familie bei nahen Verwandten schon einmal Darmkrebs aufgetreten ist.
@@ -92,7 +92,7 @@ export const DarmkrebsVorsorge = () => {
             Ab dem 55. Lebensjahr besteht Anspruch auf eine Darmspiegelung. Diese ist die beste und effektivste Methode zur Früherkennung.
           </p>
           <p className="text-slate-500 text-sm italic">
-            Sie sollte je nach Befund und Risikogruppe (familiäre Disposition) alle 5 - 10 Jahre wiederholt werden.
+            Sie sollte je nach Befund und Risikogruppe (familiäre Disposition) <span className="whitespace-nowrap">alle 5 - 10 Jahre</span> wiederholt werden.
           </p>
         </motion.div>
 

@@ -67,29 +67,34 @@ export const WechseljahreSection = () => {
       {/* --- LAYER 2 --- */}
       <div className="py-12 md:py-20 space-y-12 md:space-y-16">
         <div className="text-center max-w-4xl mx-auto space-y-6">
-          <h4 className="text-3xl md:text-5xl font-serif italic text-slate-900 leading-tight tracking-tighter">
+          <h4 className="text-3xl md:text-4xl font-serif italic text-slate-900 leading-tight tracking-tighter">
             Bedeutende <span className="text-[#e62e7a]">Schutzfunktionen</span>
           </h4>
+
           <div className="flex justify-center">
             <div className="h-[1.5px] w-12 md:w-16 bg-[#e62e7a]/40" />
           </div>
+
           <p className="text-slate-500 font-serif italic text-lg md:text-xl leading-relaxed px-4">
-            Östrogene und Progesteron schützen die Systeme Ihres Körpers:
+            Östrogene und Progesteron schützen wichtige Systeme Ihres Körpers:
           </p>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8 max-w-6xl mx-auto">
           {[
             { icon: Heart, label: "Herz-Kreislauf", desc: "System" },
-            { icon: ShieldCheck, label: "Knochen", desc: "& Gelenke" },
-            { icon: Brain, label: "Hirn-", desc: "stoffwechsel" },
-            { icon: Activity, label: "Haut", desc: "& Vitalität" },
-            { icon: Sparkles, label: "Sexual-", desc: "funktion" },
-            { icon: Leaf, label: "Lebens-", desc: "qualität" }
+            { icon: ShieldCheck, label: "Knochen", desc: "und Gelenke" },
+            { icon: Brain, label: "Hirnstoffwechsel", desc: "" },
+            { icon: Activity, label: "Haut", desc: "und Vitalität" },
+            { icon: Sparkles, label: "Sexualfunktion", desc: "" },
+            { icon: Leaf, label: "Lebensqualität", desc: "" },
           ].map((item, i) => (
             <motion.div
               key={i}
-              whileHover={{ y: -8, boxShadow: "0 30px 60px -12px rgba(230,46,122,0.18)" }}
+              whileHover={{
+                y: -8,
+                boxShadow: "0 30px 60px -12px rgba(230,46,122,0.18)",
+              }}
               className="relative group p-8 md:p-12 rounded-[30px] md:rounded-[40px] bg-white border border-slate-100 shadow-[0_15px_40px_-15px_rgba(0,0,0,0.05)] flex items-center gap-6 md:gap-8 transition-all duration-500"
             >
               <div className="relative shrink-0">
@@ -98,12 +103,15 @@ export const WechseljahreSection = () => {
               </div>
 
               <div className="space-y-1 relative z-10">
-                <p className="text-base md:text-lg font-black uppercase tracking-widest text-slate-700 leading-none">
+                <p className="text-sm md:text-base font-black uppercase tracking-widest text-slate-700 leading-none">
                   {item.label}
                 </p>
-                <p className="text-xs md:text-base font-bold uppercase tracking-widest text-[#e62e7a]/70">
-                  {item.desc}
-                </p>
+
+                {item.desc && (
+                  <p className="text-xs md:text-sm font-bold uppercase tracking-widest text-[#e62e7a]/70">
+                    {item.desc}
+                  </p>
+                )}
               </div>
             </motion.div>
           ))}
@@ -131,7 +139,7 @@ export const WechseljahreSection = () => {
             </div>
             <div className="p-6 md:p-8 rounded-[25px] bg-rose-50/50 border border-rose-100">
               <p className="text-slate-800 font-serif italic text-base md:text-lg leading-relaxed">
-                &quot;Östrogene begünstigen die Sättigung und bremsen den Appetit. Progesteron und Östrogen fördert die Schlafqualität, Motivation und Vitalität.&quot;
+                &quot;Östrogene begünstigen die Sättigung und bremsen den Appetit. Progesteron und Östrogen fördern die Schlafqualität, Motivation und Vitalität.&quot;
               </p>
             </div>
           </div>

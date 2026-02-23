@@ -13,7 +13,7 @@ export const Footer = () => {
           <div className="text-center max-w-5xl w-full space-y-8 sm:space-y-10 md:space-y-12">
 
             <div className="space-y-3 sm:space-y-4">
-              <h2 className="text-[11px] sm:text-[12px] md:text-[14px] uppercase tracking-[0.3em] sm:tracking-[0.4em] font-black text-slate-950 leading-relaxed">
+              <h2 className="text-[11px] sm:text-[12px] md:text-[14px] uppercase tracking-[0.2em] sm:tracking-[0.3em] font-black text-slate-800 leading-relaxed">
                 Nana Jobi — Fachärztin für Frauenheilkunde und Geburtshilfe <br />
                 <span className="text-[#e62e7a]">Ärztin für Präventionsmedizin</span>
               </h2>

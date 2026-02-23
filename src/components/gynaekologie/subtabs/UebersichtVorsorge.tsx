@@ -3,6 +3,8 @@
 import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
 import { ChevronRight, FlaskConical, ShieldCheck, Activity, Microscope, Zap } from "lucide-react";
+import { InfoTextCard } from "@/components/InfoTextCard";
+import { ExpandableText } from "@/components/ExpandableText";
 
 export const UebersichtVorsorge = () => {
   const router = useRouter();
@@ -40,56 +42,44 @@ export const UebersichtVorsorge = () => {
 
   return (
     <div className="space-y-12 md:space-y-16">
-      {/* Intro-Slogan */}
+      {/* Intro */}
       <div className="max-w-3xl">
         <h4 className="text-[#e62e7a] font-sans uppercase text-[10px] md:text-xs tracking-[0.4em] font-black mb-4">
           Zusätzliche Sicherheit
         </h4>
         <p className="text-slate-600 font-serif italic text-xl md:text-2xl leading-relaxed">
-          Über die gesetzliche Basisvorsorge hinaus bieten wir Ihnen spezialisierte Untersuchungen für ein Maximum an Gewissheit.
+          Über die gesetzliche Basisvorsorge hinaus bieten wir spezialisierte
+          Untersuchungen für mehr Gewissheit.
         </p>
       </div>
 
+      {/* Cards */}
       <div className="grid md:grid-cols-2 gap-6 md:gap-10">
-        {cards.map((card, idx) => (
-          <motion.div
-            key={card.id}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: idx * 0.1 }}
-            whileHover={{ y: -10 }}
-            onClick={() => router.push(`?tab=erweitert&sub=${card.id}`, { scroll: false })}
-            className="group relative p-8 md:p-12 rounded-[45px] bg-white border border-rose-100 shadow-[0_20px_50px_-15px_rgba(230,46,122,0.06)] hover:shadow-[0_40px_80px_-15px_rgba(230,46,122,0.15)] transition-all duration-500 cursor-pointer flex flex-col justify-between overflow-hidden"
-          >
-            <div className="absolute -right-8 -top-8 w-32 h-32 bg-rose-50 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+        {cards.map((card) => {
+          const Icon = card.icon;
 
-            <div className="relative z-10 space-y-6">
-              <div className="w-16 h-16 rounded-2xl bg-rose-50 flex items-center justify-center text-[#e62e7a] group-hover:bg-[#e62e7a] group-hover:text-white transition-all duration-500 shadow-sm">
-                <card.icon className="w-8 h-8" />
-              </div>
-
-              <div className="space-y-3">
-                <h3 className="text-2xl md:text-3xl font-serif italic text-slate-900 leading-[1.1] tracking-tight">
-                  {card.title}
-                </h3>
-                <div className="h-[1px] w-12 bg-[#e62e7a]/20 group-hover:w-20 transition-all duration-500" />
-              </div>
-
-              <p className="text-slate-500 font-serif italic text-base md:text-lg leading-relaxed">
-                {card.description}
-              </p>
-            </div>
-
-            <div className="relative z-10 pt-8 flex items-center gap-3 text-[#e62e7a] font-black uppercase text-[10px] tracking-[0.2em] border-t border-rose-50 mt-8">
-              <span className="group-hover:tracking-[0.3em] transition-all duration-300">
-                {card.link}
-              </span>
-              <ChevronRight className="w-4 h-4 transition-transform group-hover:translate-x-2" />
-            </div>
-          </motion.div>
-        ))}
+          return (
+            <InfoTextCard
+              key={card.id}
+              icon={<Icon className="w-8 h-8" />}
+              title={card.title}
+              titleClassName="text-slate-900"
+              onClick={() =>
+                router.push(`?tab=erweitert&sub=${card.id}`, { scroll: false })
+              }
+              ctaLabel={card.link}
+            >
+              <ExpandableText>
+                <p className="text-slate-600 mt-4 font-serif italic text-base md:text-lg leading-relaxed whitespace-pre-line">
+                  {card.description}
+                </p>
+              </ExpandableText>
+            </InfoTextCard>
+          );
+        })}
       </div>
 
+      {/* Bottom CTA */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -106,20 +96,23 @@ export const UebersichtVorsorge = () => {
               <div className="p-2 rounded-lg bg-rose-50">
                 <Zap className="w-5 h-5 fill-current" />
               </div>
-              <span className="uppercase tracking-[0.3em] font-black text-[10px]">Empfehlung</span>
+              <span className="uppercase tracking-[0.3em] font-black text-[10px]">
+                Empfehlung
+              </span>
             </div>
+
             <h4 className="text-3xl md:text-5xl font-serif italic text-slate-900 leading-[1.1] tracking-tighter">
               Individuelle <br />
               <span className="text-[#e62e7a]">Vorsorgeplanung</span>
             </h4>
           </div>
 
-          <div className="space-y-6">
-            <p className="text-slate-600 font-serif italic text-xl md:text-2xl leading-relaxed border-l-2 border-rose-100 pl-8">
-              Gerne beraten wir Sie persönlich, welche dieser erweiterten Leistungen für Ihr individuelles Risikoprofil am sinnvollsten sind.
-            </p>
-          </div>
+          <p className="text-slate-600 font-serif italic text-xl md:text-2xl leading-relaxed border-l-2 border-rose-100 pl-8">
+            Gerne beraten wir Sie persönlich, welche Leistungen für Ihr Profil
+            am sinnvollsten sind.
+          </p>
         </div>
+
         <div className="absolute inset-0 bg-gradient-to-br from-rose-50/50 to-transparent pointer-events-none" />
       </motion.div>
     </div>

@@ -12,6 +12,7 @@ import { MainVorsorge } from "@/components/gynaekologie/MainVorsorge";
 import { EmpfaengnisSection } from "@/components/gynaekologie/EmpfaengnisSection";
 import { WechseljahreSection } from "@/components/gynaekologie/WechseljahreSection";
 import { ErweiterteVorsorge } from "@/components/gynaekologie/ErweiterteVorsorge";
+import { ImpfCheck } from "@/components/gynaekologie/ImpfCheck";
 const tabsData = [
   {
     id: "krebsvorsorge",
@@ -120,10 +121,10 @@ function GynaekologieContent() {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -20 }}
                   transition={{ duration: 0.6, ease: "easeOut" }}
-                  className="text-5xl md:text-8xl font-serif text-slate-800 leading-[1.2] md:leading-[1] tracking-tighter relative pb-4"
+                  className="text-5xl md:text-8xl font-serif text-slate-800 leading-[1.0] md:leading-[0.9] tracking-tighter relative pb-4"
                 >
                   {currentTab.title} <br />
-                  <span className="text-slate-950 md:text-[#e62e7a] italic ml-0 md:ml-12 inline-block pt-2 md:pt-0">
+                  <span className="text-slate-950 md:text-[#e62e7a] italic ml-0 md:ml-8 inline-block pt-2 md:pt-0">
                     {currentTab.subtitle}...
                   </span>
                   <span className="absolute -inset-2 bg-white/20 blur-3xl -z-10 rounded-full" />
@@ -166,28 +167,29 @@ function GynaekologieContent() {
                 onValueChange={handleTabChange}
                 className="space-y-8 md:space-y-10 flex justify-center"
               >
-                <div className="flex justify-center z-30 px-0 md:px-4 w-full">
-                  <TabsList className="h-auto bg-white/80 backdrop-blur-xl p-1.5 md:p-2 grid grid-cols-2 gap-1.5 mx-auto
-                  md:flex md:w-auto md:max-w-none md:gap-2 rounded-[1rem] md:rounded-full shadow-[0_20px_50px_-12px_rgba(230,46,122,0.12)] border border-rose-100/50"
-                    style={{ height: 'max-content' }}>
-                    {tabsData.map((tab) => (
-                      <TabsTrigger
-                        key={tab.id}
-                        value={tab.id}
-                        className="group relative w-full md:w-auto px-4 md:px-10 py-3.5 md:py-4 rounded-[1rem] md:rounded-full text-[10px] md:text-[11px] uppercase tracking-[0.2em] font-black transition-all duration-500 ease-out data-[state=active]:text-white data-[state=inactive]:text-slate-500 data-[state=inactive]:hover:text-[#e62e7a]"
-                      >
-                        <div className="absolute inset-0 opacity-0 group-data-[state=active]:opacity-100 bg-gradient-to-br from-[#e62e7a] to-[#f05697] shadow-[0_8px_20px_rgba(230,46,122,0.25)] transition-all duration-500 scale-[0.98] group-data-[state=active]:scale-100 rounded-[0.9rem] md:rounded-full" />
+              <div className="flex justify-center z-30 px-0 md:px-4 w-full">
+                <TabsList
+                  className="h-auto bg-white/80 backdrop-blur-xl p-1.5 md:p-2  flex flex-wrap justify-center gap-1.5 md:gap-2  mx-auto rounded-[1rem] 2xl:rounded-full xl:rounded-[1.5rem] shadow-[0_20px_50px_-12px_rgba(230,46,122,0.12)] border border-rose-100/50"
+                  style={{ height: 'max-content' }}
+                >
+                  {tabsData.map((tab) => (
+                    <TabsTrigger
+                      key={tab.id}
+                      value={tab.id}
+                      className="group relative px-5 md:px-10 py-3.5 md:py-4 rounded-[1.2rem] md:rounded-full text-[10px] md:text-[11px] uppercase tracking-[0.2em] font-black transition-all duration-500 ease-out data-[state=active]:text-white data-[state=inactive]:text-slate-500 data-[state=inactive]:hover:text-[#e62e7a]"
+                    >
+                      <div className="absolute inset-0 opacity-0 group-data-[state=active]:opacity-100 bg-gradient-to-br from-[#e62e7a] to-[#f05697] shadow-[0_8px_20px_rgba(230,46,122,0.25)] transition-all duration-500 scale-[0.98] group-data-[state=active]:scale-100 rounded-[1.1rem] md:rounded-full" />
 
-                        <span className="relative z-10 flex items-center justify-center gap-2">
-                          <tab.icon
-                            className="w-3.5 h-3.5 md:w-4 md:h-4 transition-colors duration-500 group-data-[state=active]:text-white group-hover:group-data-[state=inactive]:text-[#e62e7a]"
-                          />
-                          <span className="leading-none">{tab.label}</span>
-                        </span>
-                      </TabsTrigger>
-                    ))}
-                  </TabsList>
-                </div>
+                      <span className="relative z-10 flex items-center justify-center gap-2">
+                        <tab.icon
+                          className="w-3.5 h-3.5 md:w-4 md:h-4 transition-colors duration-500 group-data-[state=active]:text-white group-hover:group-data-[state=inactive]:text-[#e62e7a]"
+                        />
+                        <span className="leading-none">{tab.label}</span>
+                      </span>
+                    </TabsTrigger>
+                  ))}
+                </TabsList>
+              </div>
 
                 <div className="max-w-6xl w-full mx-auto">
                   <TabsContent value="krebsvorsorge" className="outline-none">
@@ -201,6 +203,9 @@ function GynaekologieContent() {
                   </TabsContent>
                   <TabsContent value="erweitert" className="outline-none">
                     <ErweiterteVorsorge />
+                  </TabsContent>
+                  <TabsContent value="impfcheck" className="outline-none">
+                    <ImpfCheck />
                   </TabsContent>
                 </div>
               </Tabs>

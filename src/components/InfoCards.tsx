@@ -8,7 +8,6 @@ import { Phone, Mail, ArrowRight, Printer } from "lucide-react";
 export const InfoCards = () => (
   <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-0 rounded-[24px] sm:rounded-[30px] md:rounded-[60px] border border-slate-100 overflow-hidden shadow-[0_40px_100px_-20px_rgba(230,46,122,0.15)] bg-white">
 
-    {/* Öffnungszeiten */}
     <div className="p-6 sm:p-8 md:p-12 lg:p-16 flex flex-col border-b lg:border-b-0 lg:border-r border-slate-100 hover:bg-slate-50/30 transition-colors duration-500">
       <h3 className="text-sm uppercase tracking-[0.3em] font-black text-[#e62e7a] mb-8 sm:mb-12 md:mb-16 flex items-center gap-3">
         <span className="w-2 h-2 rounded-full bg-[#e62e7a] shadow-[0_0_10px_#e62e7a]" />

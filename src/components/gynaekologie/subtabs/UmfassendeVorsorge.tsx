@@ -34,7 +34,7 @@ export const UmfassendeVorsorge = () => {
       icon: ShieldCheck,
       title: "Früherkennung von Blasenkrebs",
       subtitle: "NMP 22 Check",
-      text: "Jährlich erkranken в Deutschland mehr als 28 000 Menschen an Harnblasenkrebs. Mit dem NMP 22 Bladder Check steht eine einfache Möglichkeit zur Diagnose zur Verfügung.",
+      text: "Jährlich erkranken in Deutschland mehr als 28 000 Menschen an Harnblasenkrebs. Mit dem NMP 22 Bladder Check steht eine einfache Möglichkeit zur Diagnose zur Verfügung.",
       linkText: "Weiterlesen: Blasenkrebs"
     }
   ];
@@ -70,8 +70,7 @@ export const UmfassendeVorsorge = () => {
                 <span className="text-[#e62e7a]/60">für die Frau</span>
               </h3>
               <p className="text-slate-600 font-serif italic text-lg leading-relaxed border-l-2 border-rose-100 pl-8">
-                Ein Ultraschall des kleinen Beckens mit besonderen Fokus auf die Gebärmutter und die Eierstöcke,
-                um zum Beispiel Muskelknoten und Zysten rechtzeitig zu erkennen.
+                Ein Ultraschall des kleinen Beckens mit besonderem Fokus auf die Gebärmutter und die Eierstöcke, um Muskelknoten und Zysten rechtzeitig zu erkennen.
               </p>
             </div>
           </motion.div>
@@ -104,7 +103,7 @@ export const UmfassendeVorsorge = () => {
         </div>
       </div>
 
-      {/* --- GRID КАРТОЧЕК --- */}
+      {/* --- GRID OF PREVIEW CARDS --- */}
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
         {previewCards.map((card, idx) => (
           <motion.div
