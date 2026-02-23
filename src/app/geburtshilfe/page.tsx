@@ -144,7 +144,7 @@ function GeburtshilfeContent() {
               >
               <div className="flex justify-center z-30 px-0 md:px-4 w-full">
                 <TabsList
-                  className="h-auto bg-white/80 backdrop-blur-xl p-1.5 md:p-2  flex flex-wrap justify-center gap-1.5 md:gap-2  mx-auto rounded-[1rem] 2xl:rounded-full xl:rounded-[1.5rem] shadow-[0_20px_50px_-12px_rgba(230,46,122,0.12)] border border-rose-100/50"
+                  className="h-auto bg-white/80 backdrop-blur-xl p-1.5 md:p-2  flex flex-wrap justify-center gap-1.5 md:gap-2  mx-auto rounded-[1rem] xl:rounded-[1.5rem] shadow-[0_20px_50px_-12px_rgba(230,46,122,0.12)] border border-rose-100/50"
                   style={{ height: 'max-content' }}
                 >
                   {tabsData.map((tab) => (
