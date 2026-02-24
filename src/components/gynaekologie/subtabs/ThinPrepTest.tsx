@@ -65,7 +65,7 @@ export const ThinPrepTest = () => {
 
               <div className="h-[1px] w-12 bg-[#e62e7a]/30 group-hover:w-20 transition-all duration-500" />
 
-              <div className="space-y-4 text-slate-600 font-serif italic text-base md:text-lg leading-relaxed">
+              <div className="space-y-4 text-slate-600 font-serif not-italic text-sm md:text-lg leading-relaxed">
                 <p>
                   Mit dieser verbesserten Methode ist das Zellbild besser beurteilbar. Der Test bietet eine repräsentative Auswahl diagnostisch wichtiger Zellen und liefert genauere Ergebnisse, da Verunreinigungen durch Blut und Schleim heraus gewaschen werden können.
                 </p>
@@ -112,7 +112,7 @@ export const ThinPrepTest = () => {
 
             <div className="h-[1px] w-12 bg-[#e62e7a]/30" />
 
-            <p className="text-slate-600 font-serif italic text-base md:text-lg leading-relaxed">
+            <p className="text-slate-600 font-serif not-italic text-sm md:text-lg leading-relaxed">
               Der ThinPrep Pap Test kann aufgrund seines klaren Zellbildes mit der modernen Computertechnologie des ThinPrep Imaging Systems Zelle für Zelle nach Auffälligkeiten untersuchen.
             </p>
           </div>

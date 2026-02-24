@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { motion } from "framer-motion";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
@@ -62,16 +63,17 @@ export default function FinalRefinedDesign() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.8, duration: 1 }}
-              className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8 pt-10 w-full">
+              className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8 pt-10 pb-4 w-full">
               <div className="relative group w-full lg:w-auto">
                 <div className="absolute -inset-1 bg-[#e62e7a] rounded-full blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200 animate-pulse"></div>
-                <Button className="group relative w-full lg:w-auto h-14 sm:h-16 md:h-20 px-8 sm:px-10 md:px-14 rounded-full bg-slate-950 hover:bg-[#e62e7a] text-white transition-all duration-500 uppercase tracking-[0.2em] text-[11px] font-black shadow-xl flex items-center justify-center">
-                  Termin vereinbaren
-                  <div className="ml-4 bg-white/10 p-2 rounded-full shadow-inner">
-                    <ArrowUpRight
-                      className="w-4 h-4 md:w-5 md:h-5 text-white transition-transform duration-500 ease-out group-hover:rotate-45" />
-                  </div>
-                </Button>
+                <Link href="/kontakt">
+                  <Button className="group relative w-full lg:w-auto h-14 sm:h-16 md:h-20 px-8 sm:px-10 md:px-14 rounded-full bg-slate-950 hover:bg-[#e62e7a] text-white transition-all duration-500 uppercase tracking-[0.2em] text-[11px] font-black shadow-xl flex items-center justify-center">
+                    Termin vereinbaren
+                    <div className="ml-4 bg-white/10 p-2 rounded-full shadow-inner">
+                      <ArrowUpRight className="w-4 h-4 md:w-5 md:h-5 text-white transition-transform duration-500 ease-out group-hover:rotate-45" />
+                    </div>
+                  </Button>
+                </Link>
               </div>
 
               <div className="flex flex-col items-end text-right ml-auto space-y-3">
@@ -91,7 +93,7 @@ export default function FinalRefinedDesign() {
         </section>
 
         {/* --- INFO CARDS --- */}
-        <section className="py-24 md:py-40 bg-white relative z-30">
+        <section className="py-12 md:py-40 bg-white relative z-30">
           <div className="container mx-auto px-4 md:px-6">
         <InfoCards />
         </div>

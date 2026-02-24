@@ -33,7 +33,7 @@ export const DarmkrebsVorsorge = () => {
               </p>
             </div>
 
-            <div className="space-y-6 text-slate-600 font-serif italic text-base md:text-lg leading-relaxed">
+            <div className="space-y-6 text-slate-600 font-serif not-italic text-sm md:text-lg leading-relaxed">
               <p>
                 Die gesetzlichen Krankenkassen bieten in ihrem Leistungskatalog verschiedene Vorsorgeuntersuchungen zur Früherkennung von Darmkrebs an.
               </p>
@@ -61,7 +61,7 @@ export const DarmkrebsVorsorge = () => {
                   </h4>
                 </div>
                 <div className="h-[1px] w-12 bg-[#e62e7a]/30 group-hover:w-20 transition-all duration-500" />
-                <p className="text-slate-600 font-serif italic text-base md:text-lg leading-relaxed">
+                <p className="text-slate-600 font-serif not-italic text-sm md:text-lg leading-relaxed">
                   Rauchen, übermäßiger Alkoholgenuss, falsche Ernährung (fettreich, ballaststoffarm&nbsp;=&nbsp;Fastfood) und zu wenig körperliche Bewegung.
                 </p>
                 <p className="text-slate-400 text-sm italic pt-4 border-t border-rose-50">
@@ -108,7 +108,7 @@ export const DarmkrebsVorsorge = () => {
             <h4 className="text-2xl md:text-3xl font-serif italic text-[#e62e7a] leading-tight">
               Wann ist ein immunologischer Stuhltest sinnvoll?
             </h4>
-            <div className="space-y-4 text-slate-600 font-serif italic text-base md:text-lg leading-relaxed">
+            <div className="space-y-4 text-slate-600 font-serif not-italic text-sm md:text-lg leading-relaxed">
               <p>
                 Dieses neue, verbesserte Verfahren bietet eine höhere diagnostische Sicherheit als die herkömmlichen Stuhlkärtchen.
               </p>

@@ -70,7 +70,7 @@ export const UebersichtVorsorge = () => {
               ctaLabel={card.link}
             >
               <ExpandableText>
-                <p className="text-slate-600 mt-4 font-serif italic text-base md:text-lg leading-relaxed whitespace-pre-line">
+                <p className="text-slate-600 mt-4 font-serif not-italic text-sm md:text-lg leading-relaxed whitespace-pre-line">
                   {card.description}
                 </p>
               </ExpandableText>

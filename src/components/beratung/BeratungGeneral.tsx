@@ -46,7 +46,7 @@ export const BeratungGeneral = () => {
             </p>
           </div>
 
-          <div className="space-y-6 text-slate-600 font-serif italic text-base md:text-lg leading-relaxed">
+          <div className="space-y-6 text-slate-600 font-serif not-italic text-sm md:text-lg leading-relaxed">
             <p>
               Wir nehmen als Vorgabe die Mutterschaftsvorsorgerichtlinien und bringen unser Wissen, das wir durch regelmäßige Weiterbildung auf dem neuesten Stand halten, in die Beratung mit ein.
             </p>
@@ -63,14 +63,14 @@ export const BeratungGeneral = () => {
           viewport={{ once: true }}
           className="lg:col-span-4"
         >
-          <div className="p-8 md:p-10 rounded-[40px] bg-white border border-rose-100 shadow-[0_30px_60px_-15px_rgba(230,46,122,0.1)] relative overflow-hidden h-full flex flex-col justify-center group">
+          <div className="p-6 md:p-8 rounded-[40px] bg-white border border-rose-100 shadow-[0_30px_60px_-15px_rgba(230,46,122,0.1)] relative overflow-hidden h-auto flex flex-col justify-center group">
             <UserCheck className="absolute -right-6 -top-6 w-32 h-32 text-[#e62e7a]/5 rotate-12 transition-transform duration-1000 group-hover:rotate-0" />
 
             <div className="relative z-10 space-y-6">
               <div className="w-12 h-12 rounded-2xl bg-rose-50 flex items-center justify-center text-[#e62e7a]">
                 <UserCheck className="w-6 h-6" />
               </div>
-              <p className="text-slate-800 font-serif italic text-lg leading-relaxed">
+              <p className="text-slate-800 font-serif italic text-lg leading-relaxed break-all">
                 Bei Schwangerschaftsbeschwerden beraten wir Sie gern, bei eventuellen Erkrankungen klären wir Sie auf и ergreifen die notwendigen Maßnahmen.
               </p>
             </div>

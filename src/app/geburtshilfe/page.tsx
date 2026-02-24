@@ -3,7 +3,7 @@
 import { useState, useEffect, Suspense } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
-import { useSearchParams, useRouter } from "next/navigation";
+import { useSearchParams, useRouter, usePathname } from "next/navigation";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Heart, Baby, ClipboardList, Thermometer, Sparkles, Activity } from "lucide-react";
 import { Header } from "@/components/header";
@@ -78,28 +78,23 @@ const tabsData = [
 
 function GeburtshilfeContent() {
   const searchParams = useSearchParams();
-    const router = useRouter();
-  const tabFromUrl = searchParams.get("tab") || "beratung";
-  
-    const [activeTab, setActiveTab] = useState(tabFromUrl);
-    const [tabsVisible, setTabsVisible] = useState(false);
+  const router = useRouter();
+  const pathname = usePathname();
+  const [tabsVisible, setTabsVisible] = useState(false);
+  const activeTab = searchParams.get("tab") || "beratung";
   
     useEffect(() => {
       const t = setTimeout(() => setTabsVisible(true), 600);
       return () => clearTimeout(t);
     }, []);
-  
-    const handleTabChange = (value: string) => {
-      setActiveTab(value);
-  
-      const params = new URLSearchParams(searchParams.toString());
-      params.set("tab", value);
-      params.delete("sub");
-  
-      router.push(`?${params.toString()}`, { scroll: false });
-    };
-  
-    const currentTab = tabsData.find(t => t.id === activeTab) || tabsData[0];
+
+  const handleTabChange = (value: string) => {
+    const params = new URLSearchParams(searchParams.toString());
+    params.set("tab", value);
+    router.push(`${pathname}?${params.toString()}`, { scroll: false });
+  };
+
+  const currentTab = tabsData.find((t) => t.id === activeTab) || tabsData[0];
 
   return (
     <div className="min-h-screen bg-[#FCFBFA]">

@@ -145,7 +145,7 @@ function GynaekologieContent() {
                   >
                     <p className="text-[10px] md:text-[11px] uppercase tracking-[0.3em] font-bold text-slate-600 leading-relaxed">
                       {currentTab.slogan} <br className="hidden md:block" />
-                      <span className="text-[#e62e7a]/80 italic">Heilbronn — Für Ihre Gesundheit.</span>
+                      <span className="text-[#e62e7a]/80 italic">Nana Jobi — Für Ihre Gesundheit.</span>
                     </p>
                   </motion.div>
                 </AnimatePresence>

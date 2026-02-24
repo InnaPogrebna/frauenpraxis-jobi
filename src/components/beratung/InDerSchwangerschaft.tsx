@@ -2,9 +2,16 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { Heart, Sparkles, HelpCircle } from "lucide-react";
 
 export const InDerSchwangerschaft = () => {
+  const router = useRouter();
+
+  const handleNavigation = (tab: string) => {
+    router.push(`/geburtshilfe?tab=${tab}`);
+  };
   return (
     <div className="space-y-8 md:space-y-12">
       <motion.div
@@ -48,10 +55,10 @@ export const InDerSchwangerschaft = () => {
           </div>
 
           <div className="space-y-6 text-slate-600 font-serif italic text-base md:text-lg leading-relaxed">
-            <p>
+            <p className="not-italic text-sm">
               Mit einer Schwangerschaft beginnt für Sie ein neuer und aufregender Lebensabschnitt.
             </p>
-            <p>
+            <p className="not-italic text-sm">
               Neben der Freude auf dieses wundervolle Ereignis stellen Sie sich wahrscheinlich,
               wie viele werdende Eltern, einige Fragen.
             </p>
@@ -64,7 +71,7 @@ export const InDerSchwangerschaft = () => {
           viewport={{ once: true }}
           className="lg:col-span-5"
         >
-          <div className="p-8 md:p-12 rounded-[40px] bg-rose-50/30 border border-rose-100 shadow-[0_40px_100px_-20px_rgba(230,46,122,0.12)] relative overflow-hidden group">
+          <div className="p-6 md:p-12 rounded-[40px] bg-rose-50/30 border border-rose-100 shadow-[0_40px_100px_-20px_rgba(230,46,122,0.12)] relative overflow-hidden group">
             <Sparkles className="absolute -right-8 -top-8 w-48 h-48 text-[#e62e7a]/5 rotate-12 transition-transform duration-1000 group-hover:rotate-0" />
 
             <div className="relative z-10 space-y-8">
@@ -76,9 +83,9 @@ export const InDerSchwangerschaft = () => {
                 <div className="h-[1px] w-12 bg-[#e62e7a]/30" />
               </div>
 
-              <div className="space-y-6 text-slate-700 font-serif italic text-base md:text-lg leading-relaxed">
-                <p>Was können wir mehr tun, als das „nur mal Nötige“?</p>
-                <p className="text-slate-500 text-sm md:text-base border-t border-rose-100 pt-6">
+              <div className="space-y-6 text-slate-700 font-serif italic text-sm md:text-lg leading-relaxed">
+                <p className="not-italic text-sm">Was können wir mehr tun, als das „nur mal Nötige“?</p>
+                <p className="text-slate-500 text-sm not-italic text-sm md:text-base border-t border-rose-100 pt-6">
                   Wir helfen Ihnen dabei, sich einen Überblick zu verschaffen und beraten Sie gerne
                   über sinnvolle zusätzliche Untersuchungen.
                 </p>
@@ -95,13 +102,20 @@ export const InDerSchwangerschaft = () => {
         viewport={{ once: true }}
       >
         <div className="grid md:grid-cols-2 gap-4 pt-4">
-          <div className="p-6 rounded-[30px] bg-white border border-rose-100 shadow-sm flex items-center gap-4 group hover:border-[#e62e7a] transition-colors duration-500">
+          <div
+            onClick={() => handleNavigation("richtlinien")}
+            className="p-4 md:p-6 rounded-[30px] bg-white border border-rose-100 shadow-sm flex items-center gap-4 group hover:border-[#e62e7a] transition-colors duration-500 cursor-pointer h-full"
+          >
             <HelpCircle className="text-[#e62e7a] w-5 h-5 shrink-0" />
             <span className="text-slate-700 font-serif italic text-sm md:text-base">
               Ist mein Kind gesund?
             </span>
           </div>
-          <div className="p-6 rounded-[30px] bg-white border border-rose-100 shadow-sm flex items-center gap-4 group hover:border-[#e62e7a] transition-colors duration-500">
+
+          <div
+            onClick={() => handleNavigation("igel")}
+            className="p-4 md:p-6 rounded-[30px] bg-white border border-rose-100 shadow-sm flex items-center gap-4 group hover:border-[#e62e7a] transition-colors duration-500 cursor-pointer h-full"
+          >
             <HelpCircle className="text-[#e62e7a] w-5 h-5 shrink-0" />
             <span className="text-slate-700 font-serif italic text-sm md:text-base">
               Welche Untersuchungen gibt es?

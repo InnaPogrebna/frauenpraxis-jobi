@@ -36,7 +36,7 @@ export const BlasenkrebsCheck = () => {
             (Tendenz steigend).
           </p>
           <div className="h-[1px] w-12 bg-rose-100" />
-          <p className="text-slate-500 font-serif italic text-base md:text-lg leading-relaxed">
+          <p className="text-slate-500 font-serif not-italic text-sm md:text-lg leading-relaxed">
             Die Früherkennung von Blasenkrebs gehört noch immer nicht zur routinemäßigen Krebsvorsorge.
           </p>
         </motion.div>

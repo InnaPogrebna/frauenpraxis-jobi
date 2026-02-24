@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { motion } from "framer-motion";
+import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Phone, Mail, ArrowRight, Printer } from "lucide-react";
 
@@ -84,10 +84,12 @@ export const InfoCards = () => (
         </div>
       </div>
 
-      <Button className="w-full h-14 sm:h-16 md:h-20 mt-10 sm:mt-12 md:mt-16 rounded-full bg-slate-950 hover:bg-[#e62e7a] text-white transition-all duration-500 uppercase tracking-[0.3em] text-[11px] font-black shadow-xl">
-        Кontaktformular
-        <ArrowRight className="w-5 h-5" />
-      </Button>
+      <Link href="/kontakt" className="w-full">
+        <Button className="w-full h-14 sm:h-16 md:h-20 mt-10 sm:mt-12 md:mt-16 rounded-full bg-slate-950 hover:bg-[#e62e7a] text-white transition-all duration-500 uppercase tracking-[0.3em] text-[11px] font-black shadow-xl">
+          Kontaktformular
+          <ArrowRight className="w-5 h-5 ml-2" />
+        </Button>
+      </Link>
     </div>
 
   </div>

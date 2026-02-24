@@ -94,7 +94,7 @@ export const UmfassendeVorsorge = () => {
                 </h4>
               </div>
               <div className="h-[1px] w-12 bg-[#e62e7a]/30 group-hover:w-20 transition-all duration-500" />
-              <p className="text-slate-600 font-serif italic text-base md:text-lg leading-relaxed">
+              <p className="text-slate-600 font-serif not-italic text-sm md:text-lg leading-relaxed">
                 Der Brustultraschall erkennt Veränderungen, bevor diese getastet werden können.
               </p>
             </div>
@@ -127,7 +127,7 @@ export const UmfassendeVorsorge = () => {
                   {card.subtitle}
                 </p>
               </div>
-              <p className="text-slate-500 font-serif italic text-base leading-relaxed line-clamp-4">
+              <p className="text-slate-500 font-serif not-italic text-sm leading-relaxed line-clamp-4">
                 {card.text}
               </p>
             </div>

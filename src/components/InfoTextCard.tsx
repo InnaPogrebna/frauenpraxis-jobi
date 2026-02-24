@@ -27,7 +27,7 @@ export const InfoTextCard = ({
   return (
     <motion.div
       className={clsx(
-        `group relative p-8 md:p-12 rounded-[45px] bg-white
+        `group relative p-6 md:p-12 rounded-[30px] md:rounded-[45px] bg-white
          border border-rose-100
          shadow-[0_20px_50px_-15px_rgba(230,46,122,0.06)]
          flex flex-col justify-between overflow-hidden
@@ -37,7 +37,7 @@ export const InfoTextCard = ({
     >
       <div className="space-y-4 relative z-10">
         {/* Icon */}
-        <div className="w-16 h-16 rounded-2xl bg-rose-50 flex items-center justify-center text-[#e62e7a] group-hover:bg-[#e62e7a] group-hover:text-white transition-all duration-500 shadow-sm">
+        <div className="w-12 h-12 md:w-16 md:h-16 rounded-xl md:rounded-2xl bg-rose-50 flex items-center justify-center text-[#e62e7a] group-hover:bg-[#e62e7a] group-hover:text-white transition-all duration-500 shadow-sm">
           {icon}
         </div>
 
@@ -52,7 +52,7 @@ export const InfoTextCard = ({
         </h3>
 
         {/* Content */}
-        <div className="space-y-4 text-slate-500 font-serif not-italic text-base md:text-lg leading-relaxed">
+        <div className="space-y-4 text-slate-500 font-serif not-italic text-sm md:text-lg leading-relaxed">
           {children}
         </div>
       </div>
