@@ -88,7 +88,7 @@ export default function KontaktPage() {
       <Header forceScrolled />
 
       <main className="flex-1 pt-32 md:pt-44 pb-20">
-        <div className="max-w-7xl mx-auto">
+        <div className="max-w-7xl mx-auto px-4">
 
           {/* --- HERO SECTION --- */}
           <motion.div
@@ -107,12 +107,12 @@ export default function KontaktPage() {
           <div className="grid lg:grid-cols-12 gap-8 items-start">
 
             {/* --- LEFT SIDE (5/12) --- */}
-            <div className="lg:col-span-5 space-y-8 flex flex-col h-full">
+            <div className="lg:col-span-5 space-y-6 sm:space-y-8 flex flex-col h-full">
               <div className="grid sm:grid-cols-2 lg:grid-cols-1 gap-6">
                 <InfoTextCard
                   icon={<MapPin className="w-5 h-5" />}
                   title="Anschrift"
-                  className="!p-8 !rounded-[40px]"
+                  className="!p-6 sm:!p-10 !rounded-[30px] sm:!rounded-[45px]"
                 >
                   <p className="font-serif italic text-lg text-slate-700 leading-tight">
                     Staufenbergstraße 31 <br />
@@ -136,7 +136,7 @@ export default function KontaktPage() {
                 </div>
               </div>
 
-              <div className="p-8 md:p-10 rounded-[50px] bg-white border border-rose-100 shadow-[0_20px_50px_-15px_rgba(230,46,122,0.05)] relative overflow-hidden flex-1">
+              <div className="p-6 sm:p-10 rounded-[30px] sm:rounded-[45px] bg-white border border-rose-100 shadow-[0_20px_50px_-15px_rgba(230,46,122,0.05)] relative overflow-hidden flex-1">
                 <Clock className="absolute -right-6 -top-6 w-32 h-32 text-rose-50/50" />
                 <h3 className="text-sm uppercase tracking-[0.3em] font-black text-[#e62e7a] mb-10">
                   Sprechzeiten
@@ -158,9 +158,9 @@ export default function KontaktPage() {
 
             {/* --- RIGHT SIDE / FORM (7/12) --- */}
             <motion.div
-              initial={{ opacity: 0, x: 20 }}
+              initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              className="lg:col-span-7 bg-white rounded-[50px] md:rounded-[70px] p-8 md:p-16 lg:p-20 border border-rose-100 shadow-[0_40px_100px_-20px_rgba(230,46,122,0.12)]"
+              className="lg:col-span-7 bg-white rounded-[30px] md:rounded-[45px] p-4 sm:p-12 lg:p-16 border border-rose-100 shadow-[0_40px_100px_-20px_rgba(230,46,122,0.12)]"
             >
               <AnimatePresence mode="wait">
                 {!isSuccess ? (
@@ -283,7 +283,8 @@ export default function KontaktPage() {
                         <button
                           disabled={isSubmitting}
                           type="submit"
-                          className="group max-w-5xl mx-auto py-5 md:py-6 px-5 md:px-10 rounded-full bg-slate-950 hover:bg-[#e62e7a] disabled:bg-slate-400 text-white transition-all duration-500 uppercase tracking-[0.4em] text-[11px] font-black flex items-center justify-center gap-4 shadow-2xl font-sans"
+                          className="group md:max-w-5xl mx-auto w-full py-4 md:py-6 px-2 md:px-10 rounded-[30px] md:rounded-full
+                          bg-slate-950 hover:bg-[#e62e7a] disabled:bg-slate-400 text-white transition-all duration-500 uppercase tracking-[0.3em] md:tracking-[0.4em] text-[11px] font-black flex items-center justify-center gap-2 md:gap-4 shadow-2xl font-sans"
                         >
                           {isSubmitting ? (
                             <>
