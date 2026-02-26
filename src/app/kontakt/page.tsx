@@ -1,7 +1,8 @@
 "use client";
 
-import { useState } from "react";
 import { useForm } from "react-hook-form";
+import { useState, useEffect } from "react";
+import { supabase } from "@/lib/supabase";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 import { motion, AnimatePresence } from "framer-motion";
@@ -17,6 +18,16 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+
+type Day = {
+  id?: string;
+  day_name: string;
+  am_open?: string;
+  am_close?: string;
+  pm_open?: string;
+  pm_close?: string;
+  is_closed?: boolean;
+};
 
 const contactSchema = z.object({
   name: z.string().min(2, { message: "Bitte geben Sie Ihren Namen ein" }),
@@ -76,12 +87,28 @@ export default function KontaktPage() {
       setIsSubmitting(false);
     }
   };
-  const openingHours = [
-    { d: "Montag, Dienstag", t: "09.00 – 13.00 | 15.00 – 18.00" },
-    { d: "Mittwoch", t: "09.00 – 13.00" },
-    { d: "Donnerstag", t: "09.00 – 13.00 | 15.00 – 18.00" },
-    { d: "Freitag", t: "09.00 – 13.00" },
-  ];
+  const [openingHours, setOpeningHours] = useState<Day[]>([]);
+
+  useEffect(() => {
+    const fetchSchedule = async () => {
+      const { data, error } = await supabase
+        .from("schedule")
+        .select("*")
+        .order("day_index", { ascending: true });
+
+      if (error || !data || data.length === 0) {
+        setOpeningHours([
+          { day_name: "Montag, Dienstag", am_open: "09.00", am_close: "13.00", pm_open: "15.00", pm_close: "18.00" },
+          { day_name: "Mittwoch", am_open: "09.00", am_close: "13.00" },
+          { day_name: "Donnerstag", am_open: "09.00", am_close: "13.00", pm_open: "15.00", pm_close: "18.00" },
+          { day_name: "Freitag", am_open: "09.00", am_close: "13.00" },
+        ]);
+      } else {
+        setOpeningHours(data);
+      }
+    };
+    fetchSchedule();
+  }, []);
 
   return (
     <div className="min-h-screen bg-[#FCFBFA] flex flex-col selection:bg-[#e62e7a]/10">
@@ -120,7 +147,7 @@ export default function KontaktPage() {
                   </p>
                 </InfoTextCard>
 
-                <div className="grid grid-cols-1 gap-4">
+                {/* <div className="grid grid-cols-1 gap-4">
                   <div className="p-8 rounded-[40px] bg-white border border-rose-100 shadow-sm transition-hover hover:shadow-md">
                     <p className="text-[10px] uppercase tracking-widest font-black text-[#e62e7a] mb-2">Telefon</p>
                     <a href="tel:+49713142570" className="font-serif italic text-xl text-slate-800 hover:text-[#e62e7a] transition">
@@ -133,7 +160,7 @@ export default function KontaktPage() {
                       info@frauenpraxis-jobi.de
                     </a>
                   </div>
-                </div>
+                </div> */}
               </div>
 
               <div className="p-6 sm:p-10 rounded-[30px] sm:rounded-[45px] bg-white border border-rose-100 shadow-[0_20px_50px_-15px_rgba(230,46,122,0.05)] relative overflow-hidden flex-1">
@@ -142,22 +169,37 @@ export default function KontaktPage() {
                   Sprechzeiten
                 </h3>
                 <div className="space-y-6 relative z-10">
-                  {openingHours.map((item) => (
-                    <div key={item.d} className="group border-b border-rose-50 pb-4 last:border-0 last:pb-0">
-                      <span className="block text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1 group-hover:text-[#e62e7a] transition-colors">
-                        {item.d}
-                      </span>
-                      <span className="font-serif italic text-slate-900 text-lg md:text-xl tracking-tight">
-                        {item.t}
-                      </span>
+                  {openingHours.length > 0 ? (
+                    openingHours.map((item) => (
+                      <div key={item.id || item.day_name} className="group border-b border-rose-50 pb-4 last:border-0 last:pb-0">
+                        <span className="block text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1 group-hover:text-[#e62e7a] transition-colors">
+                          {item.day_name}
+                        </span>
+                        <span className="font-serif italic text-slate-900 text-lg md:text-xl tracking-tight">
+                          {item.is_closed ? (
+                            "Geschlossen"
+                          ) : (
+                            <>
+                              {item.am_open} bis {item.am_close} Uhr
+                              {item.pm_open && ` | ${item.pm_open} bis ${item.pm_close} Uhr`}
+                            </>
+                          )}
+                        </span>
+                      </div>
+                    ))
+                  ) : (
+                    <div className="space-y-4 animate-pulse">
+                      {[1, 2, 3, 4].map((i) => (
+                        <div key={i} className="h-12 bg-slate-50 rounded-2xl w-full" />
+                      ))}
                     </div>
-                  ))}
+                  )}
                 </div>
               </div>
             </div>
 
             {/* --- RIGHT SIDE / FORM (7/12) --- */}
-            <motion.div
+            {/* <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               className="lg:col-span-7 bg-white rounded-[30px] md:rounded-[45px] p-4 sm:p-12 lg:p-16 border border-rose-100 shadow-[0_40px_100px_-20px_rgba(230,46,122,0.12)]"
@@ -186,7 +228,6 @@ export default function KontaktPage() {
 
                     <form onSubmit={handleSubmit(onSubmit)} className="space-y-10">
                       <div className="grid gap-6 md:gap-10">
-                        {/* Name */}
                         <div className="relative group">
                           <input
                             {...register("name")}
@@ -204,7 +245,6 @@ export default function KontaktPage() {
                         </div>
 
                         <div className="grid md:grid-cols-1 gap-6 md:gap-10">
-                          {/* Email */}
                           <div className="relative group">
                             <input
                               {...register("email")}
@@ -221,7 +261,6 @@ export default function KontaktPage() {
                             {errors.email && <p className="text-[10px] text-red-500 mt-2 font-sans font-bold uppercase">{errors.email.message}</p>}
                           </div>
 
-                          {/* Telefon */}
                           <div className="relative group">
                             <input
                               {...register("phone")}
@@ -237,7 +276,6 @@ export default function KontaktPage() {
                           </div>
                         </div>
 
-                        {/* Subject (Shadcn Select) */}
                         <div className="relative space-y-2 font-sans pt-2">
                           <label className="text-[10px] font-black text-[#e62e7a] tracking-[0.2em] uppercase">
                             Betreff auswählen
@@ -261,7 +299,6 @@ export default function KontaktPage() {
                           </Select>
                         </div>
 
-                        {/* Nachricht */}
                         <div className="relative pt-4">
                           <textarea
                             {...register("message")}
@@ -340,6 +377,65 @@ export default function KontaktPage() {
                   </motion.div>
                 )}
               </AnimatePresence>
+            </motion.div> */}
+
+            <motion.div
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              className="lg:col-span-7"
+            >
+              <div className="bg-white rounded-[30px] md:rounded-[60px] p-4 md:p-20 border border-rose-100 shadow-[0_40px_100px_-20px_rgba(230,46,122,0.12)] relative overflow-hidden h-full flex flex-col justify-center">
+
+                {/* Элегантный фон */}
+                <div className="absolute top-0 right-0 w-96 h-96 bg-rose-50/50 rounded-full blur-[100px] -mr-48 -mt-48" />
+
+                <div className="relative z-10 space-y-16">
+                  <div className="space-y-6">
+                    <h2 className="font-serif italic text-5xl md:text-7xl text-slate-900 tracking-tighter leading-tight">
+                      Lassen Sie uns <br />
+                      <span className="text-[#e62e7a]">sprechen.</span>
+                    </h2>
+                    <p className="text-slate-500 font-serif italic text-xl leading-relaxed max-w-md">
+                      Für Terminvereinbarungen oder Fragen stehen wir Ihnen gerne persönlich zur Verfügung.
+                    </p>
+                  </div>
+
+                  <div className="space-y-10">
+                    {/* Телефон */}
+                    <div className="group">
+                      <span className="text-[10px] font-black uppercase tracking-[0.3em] text-[#e62e7a] block mb-4">Telefonisch</span>
+                      <a
+                        href="tel:+49713142570"
+                        className="text-xl sm:text-3xl md:text-5xl font-sans font-light tracking-tighter text-slate-800 hover:text-[#e62e7a] transition-colors duration-500"
+                      >
+                        0 71 31 - 42 57 0
+                      </a>
+                    </div>
+
+                    {/* Email  */}
+                    <div className="group">
+                      <span className="text-[10px] font-black uppercase tracking-[0.3em] text-slate-400 block mb-4">Per E-Mail</span>
+                      <a
+                        href="mailto:info@frauenpraxis-jobi.de"
+                        className="text-xl sm:text-2xl md:text-3xl font-serif italic text-slate-700 hover:text-[#e62e7a] transition-colors duration-500 border-b border-slate-200 hover:border-[#e62e7a]/30 pb-1"
+                      >
+                        info@frauenpraxis-jobi.de
+                      </a>
+                    </div>
+                  </div>
+
+                  <div className="pt-10 flex justify-center">
+                    <a
+                      href="https://www.google.de/maps/dir//Staufenbergstra%C3%9Fe+31,+74081+Heilbronn,+Deutschland/@49.1186511,9.1911004,17z/data=!4m8!4m7!1m0!1m5!1m1!1s0x47982ed502e5ddcd:0x404d12375c9e417e!2m2!1d9.1934161!2d49.118689?hl=de&entry=ttu&g_ep=EgoyMDI2MDIyMy4wIKXMDSoASAFQAw%3D%3D"
+                      target="_blank"
+                      className="inline-flex justify-center items-center gap-2 md:gap-4 bg-slate-900 text-white px-6 md:px-10 py-3 md:py-5 rounded-full text-[11px] font-black uppercase tracking-widest hover:bg-[#e62e7a] transition-all duration-500 shadow-2xl hover:shadow-rose-200"
+                    >
+                      <span>Anfahrt planen</span>
+                      <MapPin className="w-4 h-4" />
+                    </a>
+                  </div>
+                </div>
+              </div>
             </motion.div>
           </div>
 

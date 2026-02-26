@@ -1,10 +1,12 @@
 "use client";
 
+import { useState, useEffect } from "react";
+import { supabase } from "@/lib/supabase";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { InfoCards } from "@/components/InfoCards";
 
-const teamMembers = [
+const staticTeam = [
   {
     name: "Nana Jobi",
     role: "Fachärztin für Frauenheilkunde & Geburtshilfe, Ärztin für Präventionsmedizin",
@@ -22,9 +24,45 @@ const teamMembers = [
   }
 ];
 
-export const TeamSection = () => (
-  <div className="space-y-24 md:space-y-32">
+interface TeamMember {
+  name: string;
+  role: string;
+  image: string;
+}
 
+export const TeamSection = () => {
+  const [team, setTeam] = useState<TeamMember[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchTeam = async () => {
+      try {
+        const { data: res, error } = await supabase
+          .from("team")
+          .select("*")
+          .order("sort_order", { ascending: true })
+
+        if (error || !res || res.length === 0) {
+          setTeam(staticTeam);
+        } else {
+          setTeam(res.map(m => ({
+            name: m.name,
+            role: m.role,
+            image: m.image_url
+          })));
+        }
+      } catch (err) {
+        setTeam(staticTeam);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchTeam();
+  }, []);
+
+  return (
+  <div className="space-y-24 md:space-y-32">
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
@@ -41,7 +79,7 @@ export const TeamSection = () => (
     </motion.div>
 
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12 md:gap-10 lg:gap-16">
-      {teamMembers.map((m, i) => (
+      {team.map((m, i) => (
         <motion.div
           key={i}
           initial={{ opacity: 0, y: 30 }}
@@ -81,4 +119,5 @@ export const TeamSection = () => (
 
     <InfoCards />
   </div>
-);
+  );
+};

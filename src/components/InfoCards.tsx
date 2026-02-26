@@ -1,11 +1,48 @@
 "use client";
 
+import { useState, useEffect } from "react";
+import { supabase } from "@/lib/supabase";
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Phone, Mail, ArrowRight, Printer } from "lucide-react";
 
-export const InfoCards = () => (
+const staticSchedule = [
+  { day_name: "Montag, Dienstag", am_open: "09.00", am_close: "13.00", pm_open: "15.00", pm_close: "18.00", is_closed: false },
+  { day_name: "Mittwoch", am_open: "09.00", am_close: "13.00", pm_open: null, pm_close: null, is_closed: false },
+  { day_name: "Donnerstag", am_open: "09.00", am_close: "13.00", pm_open: "15.00", pm_close: "18.00", is_closed: false },
+  { day_name: "Freitag", am_open: "09.00", am_close: "13.00", pm_open: null, pm_close: null, is_closed: false },
+];
+
+interface Shedule {
+  id?: number;
+  day_name: string;
+  am_open: string;
+  am_close: string;
+  pm_open: string | null;
+  pm_close: string | null;
+  is_closed: boolean;
+}
+export const InfoCards = () => {
+  const [schedule, setSchedule] = useState<Shedule[]>([]);
+
+  useEffect(() => {
+    const fetchSchedule = async () => {
+      const { data, error } = await supabase
+        .from("schedule")
+        .select("*")
+        .order("day_index", { ascending: true });
+
+      if (error || !data || data.length === 0) {
+        setSchedule(staticSchedule as Shedule[]);
+      } else {
+        setSchedule(data);
+      }
+    };
+    fetchSchedule();
+  }, []);
+
+  return (
   <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-0 rounded-[24px] sm:rounded-[30px] md:rounded-[60px] border border-slate-100 overflow-hidden shadow-[0_40px_100px_-20px_rgba(230,46,122,0.15)] bg-white">
 
     <div className="p-6 sm:p-8 md:p-12 lg:p-16 flex flex-col border-b lg:border-b-0 lg:border-r border-slate-100 hover:bg-slate-50/30 transition-colors duration-500">
@@ -14,21 +51,27 @@ export const InfoCards = () => (
         Öffnungszeiten
       </h3>
       <div className="space-y-4 flex-grow">
-        {[
-          { d: "Montag, Dienstag", t: "09.00 bis 13.00 Uhr | 15.00 bis 18.00 Uhr" },
-          { d: "Mittwoch", t: "09.00 bis 13.00 Uhr" },
-          { d: "Donnerstag", t: "09.00 bis 13.00 Uhr | 15.00 bis 18.00 Uhr" },
-          { d: "Freitag", t: "09.00 bis 13.00 Uhr" },
-        ].map((i) => (
-          <div key={i.d} className="group cursor-default border-b border-slate-50 pb-4 last:border-0 last:pb-0">
-            <span className="block text-xs font-black text-slate-400 uppercase tracking-widest mb-2 group-hover:text-[#e62e7a] transition-colors">
-              {i.d}
-            </span>
-            <span className="text-sm sm:text-base md:text-lg lg:text-xl font-serif text-slate-900 tracking-tighter italic leading-snug">
-              {i.t}
-            </span>
-          </div>
-        ))}
+          {schedule.length > 0 ? schedule.map((day, idx) => (
+            <div key={day.id || idx} className="group cursor-default border-b border-slate-50 pb-4 last:border-0 last:pb-0">
+              <span className="block text-xs font-black text-slate-400 uppercase tracking-widest mb-2 group-hover:text-[#e62e7a] transition-colors">
+                {day.day_name}
+              </span>
+              <span className="text-sm sm:text-base md:text-lg lg:text-xl font-serif text-slate-900 tracking-tighter italic leading-snug">
+                {day.is_closed ? (
+                  "Geschlossen"
+                ) : (
+                  <>
+                    {day.am_open && day.am_close && `${day.am_open} bis ${day.am_close} Uhr`}
+                    {day.pm_open && day.pm_close && ` | ${day.pm_open} bis ${day.pm_close} Uhr`}
+                  </>
+                )}
+              </span>
+            </div>
+          )) : (
+            <div className="animate-pulse space-y-4">
+              {[1, 2, 3, 4].map(n => <div key={n} className="h-12 bg-slate-100 rounded-xl" />)}
+            </div>
+          )}
       </div>
     </div>
 
@@ -42,15 +85,24 @@ export const InfoCards = () => (
             <span className="text-[#e62e7a]">74081 Heilbronn</span>
           </p>
         </div>
-        <div className="relative aspect-[4/3] sm:aspect-[16/10] lg:aspect-[4/3] rounded-[24px] sm:rounded-[30px] md:rounded-[40px] overflow-hidden border-8 border-white shadow-2xl group cursor-pointer">
-          <Image
-            src="/images/map.png"
-            alt="Map"
-            fill
-            className="object-cover grayscale contrast-125 group-hover:grayscale-0 group-hover:scale-110 transition-all duration-[1.5s] ease-out"
-          />
-          <div className="absolute inset-0 bg-rose-500/10 opacity-0 group-hover:opacity-100 transition-opacity" />
-        </div>
+          <div className="relative aspect-[4/3] sm:aspect-[16/10] lg:aspect-[4/3] rounded-[24px] sm:rounded-[30px] md:rounded-[40px] overflow-hidden border-8 border-white shadow-2xl group">
+
+            <a
+              href="https://www.google.de/maps/dir//Staufenbergstra%C3%9Fe+31,+74081+Heilbronn,+Deutschland/@49.1186511,9.1911004,17z/data=!4m8!4m7!1m0!1m5!1m1!1s0x47982ed502e5ddcd:0x404d12375c9e417e!2m2!1d9.1934161!2d49.118689?hl=de&entry=ttu&g_ep=EgoyMDI2MDIyMy4wIKXMDSoASAFQAw%3D%3D"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="absolute inset-0 z-20"
+            />
+
+            <Image
+              src="/images/map.png"
+              alt="Map"
+              fill
+              className="object-cover grayscale contrast-125 group-hover:grayscale-0 group-hover:scale-110 transition-all duration-[1.5s] ease-out"
+            />
+
+            <div className="absolute inset-0 bg-rose-500/10 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
+          </div>
       </div>
     </div>
 
@@ -94,3 +146,4 @@ export const InfoCards = () => (
 
   </div>
 );
+};
