@@ -20,7 +20,7 @@ export const BlutzuckerIgel = () => {
           className="object-cover contrast-[1.05] brightness-[1.05]"
           priority
         />
-        <div className="absolute inset-0 bg-[#e62e7a]/10 mix-blend-multiply opacity-20" />
+        <div className="absolute inset-0 bg-[#e62e7a]/10 opacity-20" />
       </motion.div>
 
       {/* --- CONTENT HEADER --- */}

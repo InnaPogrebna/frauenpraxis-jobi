@@ -10,17 +10,17 @@ const staticTeam = [
   {
     name: "Nana Jobi",
     role: "Fachärztin für Frauenheilkunde & Geburtshilfe, Ärztin für Präventionsmedizin",
-    image: "/images/team/frauenpraxis-nana-jobi-portrait-s.jpg"
+    image: "/image/frauenpraxis-nana-jobi-portrait-s.jpg"
   },
   {
     name: "Andrea Herrmann",
     role: "Medizinische Fachangestellte",
-    image: "/images/team/frauenpraxis-nana-jobi-m2.jpg"
+    image: "/image/frauenpraxis-nana-jobi-m2.jpg"
   },
   {
     name: "Gülcan Sarikaya",
     role: "Medizinische Fachangestellte",
-    image: "/images/team/Sarikaya4.webp"
+    image: "/images/Sarikaya4.webp"
   }
 ];
 

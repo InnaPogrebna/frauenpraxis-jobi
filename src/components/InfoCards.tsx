@@ -95,7 +95,7 @@ export const InfoCards = () => {
             />
 
             <Image
-              src="/images/map.png"
+              src="/images/frauenpraxis-nana-jobi-startseite-anfahrtsskizze.png"
               alt="Map"
               fill
               className="object-cover grayscale contrast-125 group-hover:grayscale-0 group-hover:scale-110 transition-all duration-[1.5s] ease-out"

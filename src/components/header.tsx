@@ -41,8 +41,8 @@ export const Header = ({ forceScrolled = false }: HeaderProps) => {
   return (
     <header
       className={`fixed top-0 w-full z-50 transition-all duration-300 ${isScrolled || isMobileMenuOpen
-          ? "h-20 border-b border-white/20 shadow-sm"
-          : "h-24 bg-transparent"
+        ? "h-20 border-b border-white/20 shadow-sm"
+        : "h-24 bg-transparent"
         }`}
     >
       <div
@@ -57,7 +57,7 @@ export const Header = ({ forceScrolled = false }: HeaderProps) => {
         <Link href="/" className="hover:opacity-80 transition-opacity flex items-center gap-4">
           <div className="relative h-12 sm:h-18 w-[160px] sm:w-[260px]">
             <Image
-              src="/images/logo.png"
+              src="/images/frauenpraxis-nana-jobi-logo-startseite.png"
               alt="Nana Jobi Logo"
               fill
               className={`object-contain transition-all duration-300 ${isScrolled || isMobileMenuOpen ? "opacity-0" : "opacity-100 brightness-110"
@@ -73,8 +73,8 @@ export const Header = ({ forceScrolled = false }: HeaderProps) => {
               className={`absolute inset-0 transition-all bg-pink-600 duration-300 drop-shadow-sm ${isScrolled || isMobileMenuOpen ? "opacity-100" : "opacity-0"
                 }`}
               style={{
-                WebkitMaskImage: 'url(/images/logo.png)',
-                maskImage: 'url(/images/logo.png)',
+                WebkitMaskImage: 'url(/images/frauenpraxis-nana-jobi-logo-startseite.png)',
+                maskImage: 'url(/images/frauenpraxis-nana-jobi-logo-startseite.png)',
                 WebkitMaskRepeat: 'no-repeat',
                 maskRepeat: 'no-repeat',
                 WebkitMaskSize: 'contain',
@@ -138,7 +138,7 @@ export const Header = ({ forceScrolled = false }: HeaderProps) => {
       >
         <div className="absolute inset-0 z-0 overflow-hidden">
           <Image
-            src="/images/hero-bg.jpg"
+            src="/images/frauenpraxis-jobi-st-header.jpg"
             alt="Ghost Background"
             fill
             className="object-cover object-[25%_center] grayscale"

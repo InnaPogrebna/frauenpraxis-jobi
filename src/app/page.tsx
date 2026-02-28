@@ -23,7 +23,7 @@ export default function FinalRefinedDesign() {
             className="absolute inset-0 z-0"
           >
             <Image
-              src="/images/hero-bg.jpg"
+              src="/images/frauenpraxis-jobi-st-header.jpg"
               alt="Nana Jobi Background"
               fill
               className="object-cover object-[25%_center] md:object-center"
@@ -95,8 +95,8 @@ export default function FinalRefinedDesign() {
         {/* --- INFO CARDS --- */}
         <section className="py-12 md:py-40 bg-white relative z-30">
           <div className="container mx-auto px-4 md:px-6">
-        <InfoCards />
-        </div>
+            <InfoCards />
+          </div>
         </section>
       </main>
       <Footer />

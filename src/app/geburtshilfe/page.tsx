@@ -43,13 +43,13 @@ const tabsData = [
     slogan: "Ein neuer und aufregender Lebensabschnitt beginnt."
   },
   {
-  id: "richtlinien",
-  label: "Mutterschafts-Richtlinien",
-  icon: ClipboardList,
-  title: "Vorsorge",
-  subtitle: "richtlinien",
-  slogan: "Strukturierte Begleitung für eine sichere Schwangerschaft."
-},
+    id: "richtlinien",
+    label: "Mutterschafts-Richtlinien",
+    icon: ClipboardList,
+    title: "Vorsorge",
+    subtitle: "richtlinien",
+    slogan: "Strukturierte Begleitung für eine sichere Schwangerschaft."
+  },
   {
     id: "igel",
     label: "Vorsorgeuntersuchungen (IGeL)",
@@ -80,13 +80,17 @@ function GeburtshilfeContent() {
   const searchParams = useSearchParams();
   const router = useRouter();
   const pathname = usePathname();
+  const [isMounted, setIsMounted] = useState(false);
   const [tabsVisible, setTabsVisible] = useState(false);
   const activeTab = searchParams.get("tab") || "beratung";
-  
-    useEffect(() => {
-      const t = setTimeout(() => setTabsVisible(true), 600);
-      return () => clearTimeout(t);
-    }, []);
+
+  useEffect(() => {
+    const frame = requestAnimationFrame(() => {
+      setIsMounted(true);
+      setTimeout(() => setTabsVisible(true), 200);
+    });
+    return () => cancelAnimationFrame(frame);
+  }, []);
 
   const handleTabChange = (value: string) => {
     const params = new URLSearchParams(searchParams.toString());
@@ -96,12 +100,14 @@ function GeburtshilfeContent() {
 
   const currentTab = tabsData.find((t) => t.id === activeTab) || tabsData[0];
 
+  if (!isMounted) return <div className="min-h-screen bg-[#FCFBFA]" />;
+
   return (
     <div className="min-h-screen bg-[#FCFBFA]">
       <Header />
       <section className="relative h-[65vh] md:h-[75vh] flex items-center overflow-hidden bg-gradient-to-r from-white via-white/20 to-transparent">
         <motion.div initial={{ scale: 1.2, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} transition={{ duration: 1.5 }} className="absolute inset-0 z-0">
-          <Image src="/images/hero-bg.jpg" alt="Geburtshilfe" fill className="object-cover opacity-60 mix-blend-overlay" priority />
+          <Image src="/images/frauenpraxis-jobi-st-header.jpg" alt="Geburtshilfe" fill className="object-cover opacity-60 mix-blend-overlay" priority />
           <div className="absolute inset-0 bg-gradient-to-b from-pink-900/10 via-transparent to-[#FCFBFA]" />
         </motion.div>
 
@@ -124,19 +130,19 @@ function GeburtshilfeContent() {
         </div>
       </section>
 
-        <main className="container mx-auto px-4 md:px-8 -mt-16 relative z-20 pb-20">
-          {tabsVisible && (
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, ease: "easeOut" }}
-              onAnimationComplete={() => setTabsVisible(true)}
+      <main className="container mx-auto px-4 md:px-8 -mt-16 relative z-20 pb-20">
+        {tabsVisible && (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+            onAnimationComplete={() => setTabsVisible(true)}
+          >
+            <Tabs
+              value={activeTab}
+              onValueChange={handleTabChange}
+              className="space-y-8 md:space-y-10 flex justify-center"
             >
-              <Tabs
-                value={activeTab}
-                onValueChange={handleTabChange}
-                className="space-y-8 md:space-y-10 flex justify-center"
-              >
               <div className="flex justify-center z-30 px-0 md:px-4 w-full">
                 <TabsList
                   className="h-auto bg-white/80 backdrop-blur-xl p-1.5 md:p-2  flex flex-wrap justify-center gap-1.5 md:gap-2  mx-auto rounded-[1rem] xl:rounded-[1.5rem] shadow-[0_20px_50px_-12px_rgba(230,46,122,0.12)] border border-rose-100/50"
@@ -160,19 +166,19 @@ function GeburtshilfeContent() {
                   ))}
                 </TabsList>
               </div>
-                <div className="max-w-6xl w-full mx-auto">
-                  <TabsContent value="beratung" className="outline-none"><BeratungGeneral /></TabsContent>
-                  <TabsContent value="kinderwunsch" className="outline-none"><Kinderwunsch /></TabsContent>
-                  <TabsContent value="schwangerschaft" className="outline-none"><InDerSchwangerschaft /></TabsContent>
-                  <TabsContent value="richtlinien" className="outline-none"><MutterschaftsRichtlinien /></TabsContent>
-                  <TabsContent value="igel" className="outline-none"><IgelVorsorge /></TabsContent>
+              <div className="max-w-6xl w-full mx-auto">
+                <TabsContent value="beratung" className="outline-none"><BeratungGeneral /></TabsContent>
+                <TabsContent value="kinderwunsch" className="outline-none"><Kinderwunsch /></TabsContent>
+                <TabsContent value="schwangerschaft" className="outline-none"><InDerSchwangerschaft /></TabsContent>
+                <TabsContent value="richtlinien" className="outline-none"><MutterschaftsRichtlinien /></TabsContent>
+                <TabsContent value="igel" className="outline-none"><IgelVorsorge /></TabsContent>
                 <TabsContent value="praenatal" className="outline-none"><Pranataldiagnostik /></TabsContent>
                 <TabsContent value="geburt" className="outline-none"><NachDerGeburt /></TabsContent>
-                </div>
-              </Tabs>
-            </motion.div>
-          )}
-        </main>
+              </div>
+            </Tabs>
+          </motion.div>
+        )}
+      </main>
       <Footer />
     </div>
   );

@@ -5,12 +5,12 @@ import Image from "next/image";
 import 'photoswipe/dist/photoswipe.css';
 
 const images = [
-  { src: "/images/gallery/frauenpraxis-nana-jobi-praxisbilder-1b.jpg", w: 1200, h: 800 },
-  { src: "/images/gallery/frauenpraxis-nana-jobi-praxisbilder-2b.jpg", w: 1200, h: 1600 },
-  { src: "/images/gallery/frauenpraxis-nana-jobi-praxisbilder-3b.jpg", w: 1200, h: 800 },
-  { src: "/images/gallery/frauenpraxis-nana-jobi-praxisbilder-4b.jpg", w: 1200, h: 800 },
-  { src: "/images/gallery/frauenpraxis-nana-jobi-praxisbilder-5b.jpg", w: 1200, h: 1600 },
-  { src: "/images/gallery/frauenpraxis-nana-jobi-praxisbilder-6b.jpg", w: 1200, h: 800 },
+  { src: "/images/frauenpraxis-nana-jobi-praxisbilder-1b.jpg", w: 1200, h: 800 },
+  { src: "/images/frauenpraxis-nana-jobi-praxisbilder-2b.jpg", w: 1200, h: 1600 },
+  { src: "/images/frauenpraxis-nana-jobi-praxisbilder-3b.jpg", w: 1200, h: 800 },
+  { src: "/images/frauenpraxis-nana-jobi-praxisbilder-4b.jpg", w: 1200, h: 800 },
+  { src: "/images/frauenpraxis-nana-jobi-praxisbilder-5b.jpg", w: 1200, h: 1600 },
+  { src: "/images/frauenpraxis-nana-jobi-praxisbilder-6b.jpg", w: 1200, h: 800 },
 ];
 
 export const AboutSection = () => (

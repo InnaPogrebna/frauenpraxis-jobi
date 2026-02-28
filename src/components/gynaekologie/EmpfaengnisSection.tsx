@@ -21,7 +21,7 @@ export const EmpfaengnisSection = () => {
           className="object-cover contrast-[1.05] brightness-[1.05]"
           priority
         />
-        <div className="absolute inset-0 bg-[#e62e7a]/10 mix-blend-multiply opacity-30" />
+        <div className="absolute inset-0 bg-[#e62e7a]/10  opacity-30" />
       </motion.div>
 
       <div className="grid lg:grid-cols-12 gap-10 md:gap-16 lg:gap-24 items-start">

@@ -58,7 +58,7 @@ export default function PraxisPage() {
             className="absolute inset-0 z-0"
           >
             <Image
-              src="/images/hero-bg.jpg"
+              src="/images/frauenpraxis-jobi-st-header.jpg"
               alt="Praxis Background"
               fill
               className="object-cover object-[25%_center] md:object-center opacity-60 mix-blend-overlay"
@@ -107,29 +107,29 @@ export default function PraxisPage() {
               onAnimationComplete={() => setTabsVisible(true)}
             >
               <Tabs defaultValue="uber-uns" className="space-y-8 md:space-y-10 flex justify-center">
-              <div className="flex justify-center z-30 px-0 md:px-4 w-full">
-                <TabsList
-                  className="h-auto bg-white/80 backdrop-blur-xl p-1.5 md:p-2  flex flex-wrap justify-center gap-1.5 md:gap-2  mx-auto rounded-[1rem] 2xl:rounded-full xl:rounded-[1.5rem] shadow-[0_20px_50px_-12px_rgba(230,46,122,0.12)] border border-rose-100/50"
-                  style={{ height: 'max-content' }}
-                >
-                  {tabsData.map((tab) => (
-                    <TabsTrigger
-                      key={tab.id}
-                      value={tab.id}
-                      className="group relative px-5 md:px-10 py-3.5 md:py-4 rounded-[1.2rem] md:rounded-full text-[10px] md:text-[11px] uppercase tracking-[0.2em] font-black transition-all duration-500 ease-out data-[state=active]:text-white data-[state=inactive]:text-slate-500 data-[state=inactive]:hover:text-[#e62e7a]"
-                    >
-                      <div className="absolute inset-0 opacity-0 group-data-[state=active]:opacity-100 bg-gradient-to-br from-[#e62e7a] to-[#f05697] shadow-[0_8px_20px_rgba(230,46,122,0.25)] transition-all duration-500 scale-[0.98] group-data-[state=active]:scale-100 rounded-[1.1rem] md:rounded-full" />
+                <div className="flex justify-center z-30 px-0 md:px-4 w-full">
+                  <TabsList
+                    className="h-auto bg-white/80 backdrop-blur-xl p-1.5 md:p-2  flex flex-wrap justify-center gap-1.5 md:gap-2  mx-auto rounded-[1rem] 2xl:rounded-full xl:rounded-[1.5rem] shadow-[0_20px_50px_-12px_rgba(230,46,122,0.12)] border border-rose-100/50"
+                    style={{ height: 'max-content' }}
+                  >
+                    {tabsData.map((tab) => (
+                      <TabsTrigger
+                        key={tab.id}
+                        value={tab.id}
+                        className="group relative px-5 md:px-10 py-3.5 md:py-4 rounded-[1.2rem] md:rounded-full text-[10px] md:text-[11px] uppercase tracking-[0.2em] font-black transition-all duration-500 ease-out data-[state=active]:text-white data-[state=inactive]:text-slate-500 data-[state=inactive]:hover:text-[#e62e7a]"
+                      >
+                        <div className="absolute inset-0 opacity-0 group-data-[state=active]:opacity-100 bg-gradient-to-br from-[#e62e7a] to-[#f05697] shadow-[0_8px_20px_rgba(230,46,122,0.25)] transition-all duration-500 scale-[0.98] group-data-[state=active]:scale-100 rounded-[1.1rem] md:rounded-full" />
 
-                      <span className="relative z-10 flex items-center justify-center gap-2">
-                        <tab.icon
-                          className="w-3.5 h-3.5 md:w-4 md:h-4 transition-colors duration-500 group-data-[state=active]:text-white group-hover:group-data-[state=inactive]:text-[#e62e7a]"
-                        />
-                        <span className="leading-none">{tab.label}</span>
-                      </span>
-                    </TabsTrigger>
-                  ))}
-                </TabsList>
-              </div>
+                        <span className="relative z-10 flex items-center justify-center gap-2">
+                          <tab.icon
+                            className="w-3.5 h-3.5 md:w-4 md:h-4 transition-colors duration-500 group-data-[state=active]:text-white group-hover:group-data-[state=inactive]:text-[#e62e7a]"
+                          />
+                          <span className="leading-none">{tab.label}</span>
+                        </span>
+                      </TabsTrigger>
+                    ))}
+                  </TabsList>
+                </div>
                 <div className="mx-auto">
                   <TabsContent value="uber-uns" className="mt-0 outline-none">
                     <AboutSection />
